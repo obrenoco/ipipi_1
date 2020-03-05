@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 Bathroom.destroy_all
 
 Bathroom.create!(location: "R. Marquês de Abrantes", rating: 4, enabled: true, latitude: -22.937145, longitude: -43.177541)
