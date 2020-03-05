@@ -1,5 +1,5 @@
 .navbar h1 {
-  color: #F4FBFF;
+  color: $my-white;
   font-size: 28px;
   font-weight: bold;
   margin: 0;
@@ -7,7 +7,7 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: #000411;
+  background: $my-black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,4 +16,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $my-white;
 }
