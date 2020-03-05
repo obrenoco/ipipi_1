@@ -9,4 +9,8 @@ class BathroomsController < ApplicationController
     @bathroom = Bathroom.find(params[:id])
   end
 
+  def done
+    @bathroom = Bathroom.find(params[:id])
+  end
+
 end
