@@ -9,26 +9,24 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
-    const markers = JSON.parse(mapElement.dataset.markers);
-  		markers.forEach((marker) => {
-    		new mapboxgl.Marker()
-      		.setLngLat([ marker.lng, marker.lat ])
-      		.addTo(map);
-    });
-    const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
-    navigator.geolocation.getCurrentPosition(function(position){
-      new mapboxgl.Marker()
-          .setLngLat([ position.coords.longitude, position.coords.latitude ])
-          .addTo(map);
-    });
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
           enableHighAccuracy: true
       },
       trackUserLocation: true
     }), 'bottom-right');
+    const markers = JSON.parse(mapElement.dataset.markers);
+  		markers.forEach((marker) => {
+        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
+    		new mapboxgl.Marker()
+      		.setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup) // added this
+      		.addTo(map);
+    });
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
+    navigator.geolocation.getCurrentPosition(function(position){});
   }
 };
 
