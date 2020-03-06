@@ -1,0 +1,11 @@
+form {
+  display: flex;
+}
+
+form .form-control {
+  background-color: $my-white;
+}
+
+form .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(25, 201, 255, 0.25);
+}

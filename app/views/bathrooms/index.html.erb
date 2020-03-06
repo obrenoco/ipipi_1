@@ -1,1 +1,9 @@
 <h1>THIS IS THE VIEW</h1>
+<%= form_tag bathrooms_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a bathroom"
+  %>
+  <%= submit_tag "Search", class: "btn btn-sky-blue" %>
+<% end %>
