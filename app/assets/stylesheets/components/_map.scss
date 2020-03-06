@@ -16,3 +16,9 @@
     // border-radius: 50%;
     padding: 10px;
 }
+
+///////////////////// REMOVE RADIUS FROM CURRENT POSITION
+.mapboxgl-user-location-accuracy-circle {
+  width: 0 !important;
+  height: 0 !important;
+}
