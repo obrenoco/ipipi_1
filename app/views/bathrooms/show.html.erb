@@ -1,5 +1,36 @@
-<h1>  <%= @bathroom.location %> </h1>
-<h1>  <%= @bathroom.rating %> stars </h1>
+
+<div class="show-container">
+
+  <br>
+  <div class="back-icon">
+    <%= link_to root_path do %>
+      <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
+    <%end%>
+  </div>
+
+  <br>
+
+  <div class="show-card-infos">
+    <h1>  <%= @bathroom.location %> </h1>
+    <i class="fas fa-toilet" id = "toilet-icon"></i>
+    <br>
+    <% @bathroom.rating.times do %>
+      <i class="fas fa-star"></i>
+    <%end%>
+    <% (5 - @bathroom.rating).times do %>
+      <i class="far fa-star"></i>
+    <% end %>
+
+    <br>
+    <h1>enabled: <%= @bathroom.enabled %></h1>
+  </div>
+</div>
+
+
+
+<!--  I don't think we need to display the longitude and latitude infos to
+  the user in the show page but the walking distance from the location.
+
 <h1> Latitude: <%= @bathroom.latitude %> </h1>
-<h1>Longitude: <%= @bathroom.longitude %></h1>
-<h1>enabled: <%= @bathroom.enabled %></h1>
+    <h1>Longitude: <%= @bathroom.longitude %></h1> -->
+
