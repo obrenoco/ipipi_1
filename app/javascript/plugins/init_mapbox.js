@@ -26,7 +26,7 @@ const initMapbox = () => {
     // GEOLOCATE
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
-          enableHighAccuracy: true
+          enableHighAccuracy: true, zoom: 22
       },
       trackUserLocation: true
     }), 'bottom-right');
@@ -36,9 +36,13 @@ const initMapbox = () => {
       // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 20, duration: 500 });
+    map.fitBounds(bounds, { padding: 10, maxZoom: 23, duration: 500 });
     navigator.geolocation.getCurrentPosition(function(position){});
     }
+           // Click when page loaded
+    window.addEventListener('load', () => {
+      document.querySelector(".mapboxgl-ctrl-geolocate").click()
+    })
   };
       //
 
