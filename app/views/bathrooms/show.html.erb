@@ -11,18 +11,19 @@
   <br>
 
   <div class="show-card-infos">
-    <h1>  <%= @bathroom.location %> </h1>
+    <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
+    <h1><em><%= @bathroom.location %></em></h1>
+    <br>
     <i class="fas fa-toilet" id = "toilet-icon"></i>
     <br>
     <% @bathroom.rating.times do %>
-      <i class="fas fa-star"></i>
+      <i class="fas fa-star" id = "star-icon"></i>
     <%end%>
     <% (5 - @bathroom.rating).times do %>
-      <i class="far fa-star"></i>
+      <i class="far fa-star" id = "star-icon"></i>
     <% end %>
 
     <br>
-    <h1>enabled: <%= @bathroom.enabled %></h1>
   </div>
 </div>
 
