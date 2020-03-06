@@ -8,5 +8,6 @@ class UsersController < ApplicationController
       }
     end
     @users = User.all
+    @bathroom = Bathroom.new
   end
 end

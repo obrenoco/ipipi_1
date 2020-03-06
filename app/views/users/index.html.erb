@@ -22,4 +22,9 @@ background: #fff;
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <pre id="info"></pre>
-<button type="button" class="btn btn-secondary" data_but="btn-xs">Create</button>
+
+<%= simple_form_for @bathroom do |f| %>
+  <%= f.input :longitude, input_html: {class: "hidden"}, label: false %>
+  <%= f.input :latitude, input_html: {class: "hidden"}, label: false %>
+  <%= f.submit "create", class: "btn btn-primary hidden", id: "create-button" %>
+<% end %>
