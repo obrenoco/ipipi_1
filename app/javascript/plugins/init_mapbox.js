@@ -23,6 +23,12 @@ const initMapbox = () => {
           .setLngLat([ position.coords.longitude, position.coords.latitude ])
           .addTo(map);
     });
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }), 'bottom-right');
   }
 };
 
