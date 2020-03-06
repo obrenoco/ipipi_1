@@ -9,6 +9,7 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
           enableHighAccuracy: true
@@ -23,6 +24,7 @@ const initMapbox = () => {
           .setPopup(popup) // added this
       		.addTo(map);
     });
+
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
