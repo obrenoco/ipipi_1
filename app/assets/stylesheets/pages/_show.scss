@@ -1,26 +1,66 @@
+.show-container {
+  text-align: center;
+}
+
+.show-container h1 {
+  font-size:18px;
+  margin-top: 15px;
+}
+
+.show-card-infos {
+  display: flex;
+  position: relative;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+#marker-icon {
+  color: #C43829;
+  font-size: 24px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
 #back-icon {
   font-size: 32px;
-  color: black;
+  color: #434340;
+  margin-left: 10px;
+}
+
+.toilet-infos {
+  display: inline-block;
 }
 
 #toilet-icon {
-  font-size: 64px;
+  font-size: 80px;
+  color: #434340;
 }
 
 #star-icon {
   color: #F7CF2A;
 }
 
-#marker-icon {
-  color: #C43829;
-  font-size: 24px;
+.go-button {
+  background-color: #4AC2E8;
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 50%;
+  width : 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin-top: 30px;
 }
 
-.show-container {
-  width: 700px;
-  margin: 20px auto;
-}
+.go-button a {
+  color:white;
+  text-decoration: none;
+  }
 
-.show-container h1 {
-  font-size:20px;
+.go-button:hover {
+  font-weight: bolder;
+  box-shadow: 0 0 0.1rem 0.2rem rgba(25, 201, 255, 0.25);
+  text-decoration: none !important;
 }
