@@ -38,7 +38,7 @@ const initMapbox = () => {
             var geocoder = new MapboxGeocoder({ // Initialize the geocoder
       accessToken: mapboxgl.accessToken,
       countries: 'br',
-      bbox: [-43.346419534882216,-23.033872959289127,-43.14634834051273,-22.879032876887223], // Set the access token
+      bbox: [-43.58198103399252,-23.082406097938403,-43.15107111695235,-22.86001883519016], // Set the access token
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: true, // Do not use the default marker style
     });
