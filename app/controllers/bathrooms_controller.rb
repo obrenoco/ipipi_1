@@ -21,4 +21,16 @@ class BathroomsController < ApplicationController
     @bathroom = Bathroom.find(params[:id])
   end
 
+  def create
+    @bathroom = Bathroom.new(bathroom_params)
+    @bathroom.save
+    redirect_to users_path
+  end
+
+
+  private
+
+  def bathroom_params
+    params.require(:bathroom).permit(:longitude, :latitude)
+  end
 end
