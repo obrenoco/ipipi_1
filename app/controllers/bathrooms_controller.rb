@@ -2,14 +2,15 @@ class BathroomsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-  	@bathrooms = Bathroom.geocoded #returns flats with coordinates
+  	@bathrooms = Bathroom.geocoded
+    @bathrooms = @bathrooms.where(enabled: true)              #returns flats with coordinates
     @markers = @bathrooms.map do |bathroom|
       {
         lat: bathroom.latitude,
-        lng: bathroom.longitude
+        lng: bathroom.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bathroom: bathroom })
       }
     end
-    @bathrooms = Bathroom.all
   end
 
   def show
@@ -20,4 +21,16 @@ class BathroomsController < ApplicationController
     @bathroom = Bathroom.find(params[:id])
   end
 
+  def create
+    @bathroom = Bathroom.new(bathroom_params)
+    @bathroom.save
+    redirect_to users_path
+  end
+
+
+  private
+
+  def bathroom_params
+    params.require(:bathroom).permit(:longitude, :latitude)
+  end
 end

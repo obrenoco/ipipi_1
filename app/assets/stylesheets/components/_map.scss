@@ -1,0 +1,27 @@
+
+///////////////////// POP-UP
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+///////////////////// CURRENT LOCATION ICON
+.mapboxgl-ctrl-bottom-right .mapboxgl-ctrl {
+    margin: 0 10px 10px 0;
+    float: right;
+    // border-radius: 50%;
+    padding: 10px;
+}
+
+///////////////////// REMOVE RADIUS FROM CURRENT POSITION
+.mapboxgl-user-location-accuracy-circle {
+  display: none !important;
+}
+
+#map {
+  height: 97vh !important;
+}
