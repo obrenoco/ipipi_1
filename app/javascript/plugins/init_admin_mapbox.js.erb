@@ -7,7 +7,7 @@ const adminMap = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'admin-map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/chausb/ck7kq4rh70q0g1io0jk2oekjb'
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
@@ -18,7 +18,7 @@ const adminMap = () => {
     });
 
     const bounds = new mapboxgl.LngLatBounds();
-    
+
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
     navigator.geolocation.getCurrentPosition(function(position){
