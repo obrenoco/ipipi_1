@@ -42,9 +42,8 @@ const initMapbox = () => {
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: true, // Do not use the default marker style
     });
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
     //
-    // Add the geocoder to the map
-    map.addControl(geocoder);
       // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
