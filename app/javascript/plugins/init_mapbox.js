@@ -9,7 +9,7 @@ const initMapbox = () => {
     // MAP STYLE
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/chausb/ck7kq4rh70q0g1io0jk2oekjb'
     });
     //
         // ADD MARKERS
