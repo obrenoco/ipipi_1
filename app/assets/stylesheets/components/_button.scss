@@ -1,0 +1,12 @@
+.btn-sky-blue {
+  background-color: $sky-blue;
+  color: white;
+  font-weight: bold;
+  border-radius: 27px;
+}
+
+.btn-sky-blue:hover {
+  color: white;
+  font-weight: bolder;
+  box-shadow: 0 0 0.1rem 0.2rem $highlight-blue;
+}
