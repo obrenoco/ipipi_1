@@ -22,6 +22,26 @@
   display: none !important;
 }
 
+
+// /////////////////// SEARCH BOX OUTSIDE MAP
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+.geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
 #map {
-  height: 97vh !important;
+    height: 82vh !important;
+    margin: 13vh 0 0 0;
+}
+
+.mapboxgl-ctrl-geocoder {
+    width: 100%;
+    min-width: 100%;
+    font-size: 15px;
+    line-height: 20px;
+    max-width: 100%;
 }
