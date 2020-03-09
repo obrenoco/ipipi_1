@@ -1,0 +1,14 @@
+form {
+  display: flex;
+  margin: 8px;
+}
+
+form .form-control {
+  background-color: $my-white;
+  border-radius: 27px;
+  margin: 0 8px 0 0;
+}
+
+form .form-control:focus {
+  box-shadow: 0 0 0 0.2rem $highlight-blue;
+}
