@@ -1,41 +1,43 @@
 <br>
-
- <div class="back-icon">
+<div class="bathroom-card">
+ <div id="back-icon">
     <%= link_to root_path do %>
       <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
-    <%end%>
-  </div>
-
-<div class="show-container">
-
-  <br>
-
-  <div class="show-card-infos">
-    <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
-    <h1><em><%= @bathroom.location %></em></h1>
-    <br>
-  </div>
-
-  <div class="toilet-infos">
-    <i class="fas fa-toilet" id = "toilet-icon"></i>
-    <br>
-    <br>
-    <% @bathroom.rating.times do %>
-      <i class="fas fa-star" id = "star-icon"></i>
-    <%end%>
-    <% (5 - @bathroom.rating).times do %>
-      <i class="far fa-star" id = "star-icon"></i>
     <% end %>
+  </div>
+
+  <div class="show-container">
+
     <br>
-  </div>
 
-  <br>
-  <div class = "btn go-button">
-    <%= link_to 'GO',root_path %>
-  </div>
 
+    <div class="toilet-infos">
+      <i class="fas fa-toilet" id = "toilet-icon"></i>
+      <br>
+    <div class="show-card-infos">
+      <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
+      <h1><em><%= @bathroom.location %></em></h1>
+      <br>
+    </div>
+      <br>
+      <div class="stars">
+      <% @bathroom.rating.times do %>
+        <i class="fas fa-star" id = "star-icon"></i>
+      <% end %>
+      <% (5 - @bathroom.rating).times do %>
+        <i class="far fa-star" id = "star-icon"></i>
+      <% end %>
+      </div>
+      <br>
+    </div>
+
+    <br>
+    <div class = "btn go-button">
+      <div style="margin: 0 auto;"><%= link_to 'GO',root_path %></div>
+    </div>
+
+  </div>
 </div>
-
 
 
 <!--  I don't think we need to display the longitude and latitude infos to
