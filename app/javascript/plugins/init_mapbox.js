@@ -82,7 +82,10 @@ const initMapbox = () => {
           'circle-color': '#3887be'
         }
       });
-      map.on('click', function(e) {
+
+      let markersArray = document.querySelectorAll(".mapboxgl-marker");
+      markersArray.forEach((marker) => {
+        marker.addEventListener("click", function() {  map.on("click", function(e) {
         var coordsObj = e.lngLat;
         canvas.style.cursor = '';
         var coords = Object.keys(coordsObj).map(function(key) {
@@ -128,6 +131,10 @@ const initMapbox = () => {
         }
         getRoute(coords, map);
       });
+      });
+        });
+
+
       // this is where the code from the next step will go
     });
     }
@@ -153,11 +160,9 @@ function getRoute(end_point, map) {
 
   // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
   var req = new XMLHttpRequest();
-  console.log(url);
   req.open('GET', url, true);
   req.onload = function() {
     var json = JSON.parse(req.response);
-    console.log(json);
     var data = json.routes[0];
     var route = data.geometry.coordinates;
     var geojson = {
