@@ -15,7 +15,7 @@ const initMapbox = () => {
           // container id specified in the HTML
       container: 'map',
         // style URL
-      style: 'mapbox://styles/mapbox/streets-v10',
+      style: 'mapbox://styles/chausb/ck7kq4rh70q0g1io0jk2oekjb',
         // initial position in [lon, lat] format
       center: [document.getElementById("lat").innerText, document.getElementById("lng").innerText],
         // initial zoom
@@ -53,9 +53,8 @@ const initMapbox = () => {
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: true, // Do not use the default marker style
     });
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
     //
-    // Add the geocoder to the map
-    map.addControl(geocoder);
       // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
