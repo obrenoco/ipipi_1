@@ -4,22 +4,32 @@ import mapboxgl from 'mapbox-gl';
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
+  if ("geolocation" in navigator) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+    const positionArray = navigator.geolocation.getCurrentPosition(position => {
+      document.getElementById("lat").innerText = position.coords.latitude;
+      document.getElementById("lng").innerText = position.coords.longitude;
+    });
     // MAP STYLE
     const map = new mapboxgl.Map({
+          // container id specified in the HTML
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+        // style URL
+      style: 'mapbox://styles/mapbox/streets-v10',
+        // initial position in [lon, lat] format
+      center: [document.getElementById("lat").innerText, document.getElementById("lng").innerText],
+        // initial zoom
+      zoom: 14
     });
     //
         // ADD MARKERS
     const markers = JSON.parse(mapElement.dataset.markers);
-      markers.forEach((marker) => {
-        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
-        new mapboxgl.Marker()
-          .setLngLat([ marker.lng, marker.lat ])
-          .setPopup(popup) // added this
-          .addTo(map);
+    markers.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup) // added this
+        .addTo(map);
     });
     // ZOOM
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
@@ -60,29 +70,29 @@ const initMapbox = () => {
 
       getRoute(start, map);
       // Add starting point to the map
-      map.addLayer({
-        id: 'point',
-        type: 'circle',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [{
-              type: 'Feature',
-              properties: {},
-              geometry: {
-                type: 'Point',
-                coordinates: start
-              }
-            }
-            ]
-          }
-        },
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#3887be'
-        }
-      });
+      // map.addLayer({
+      //   id: 'point',
+      //   type: 'circle',
+      //   source: {
+      //     type: 'geojson',
+      //     data: {
+      //       type: 'FeatureCollection',
+      //       features: [{
+      //         type: 'Feature',
+      //         properties: {},
+      //         geometry: {
+      //           type: 'Point',
+      //           coordinates: start
+      //         }
+      //       }
+      //       ]
+      //     }
+      //   },
+      //   paint: {
+      //     'circle-radius': 10,
+      //     'circle-color': '#3887be'
+      //   }
+      // });
       map.on('click', function(e) {
         var coordsObj = e.lngLat;
         canvas.style.cursor = '';
@@ -149,7 +159,7 @@ function getRoute(end_point, map) {
   // make a directions request using cycling profile
   // an arbitrary start will always be the same
   // only the end or destination will change
-  var start = [-43.1770916,-22.9214669];
+  var start = [document.getElementById("lng").innerText, document.getElementById("lat").innerText];
   var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end_point[0] + ',' + end_point[1] + '?geometries=geojson&access_token=pk.eyJ1Ijoicm9iaW4tdGVjaC13ZWIiLCJhIjoiY2s3ZjJhenlnMGhsdzNnbzRiNTJuNHc3NCJ9.MGMVxNrl3m8hf_PczKV56A';
 
   // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
