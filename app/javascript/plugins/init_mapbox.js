@@ -54,7 +54,7 @@ const initMapbox = () => {
       marker: true, // Do not use the default marker style
     });
       document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
-    //    
+    //
       // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
@@ -142,9 +142,9 @@ const initMapbox = () => {
     });
     }
            // Click when page loaded
-    // window.addEventListener('load', () => {
-    //   document.querySelector(".mapboxgl-ctrl-geolocate").click()
-    // })
+    window.addEventListener('load', () => {
+      document.querySelector(".mapboxgl-ctrl-geolocate").click()
+    })
 };
       //
 
