@@ -1,4 +1,5 @@
 <h1>Hello Admin</h1>
+<div id="geocoder" class="geocoder"></div>
 <div
   id="admin-map"
   style="width: 100%;
@@ -6,6 +7,8 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+
+<div id="geocoder" class="geocoder"></div>
 <pre id="info"></pre>
 
 <%= simple_form_for @bathroom do |f| %>
