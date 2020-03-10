@@ -10,6 +10,11 @@ const initMapbox = () => {
       document.getElementById("lat").innerText = position.coords.latitude;
       document.getElementById("lng").innerText = position.coords.longitude;
     });
+
+    // let bathroom_coords = []
+    // document.getElementById("lat").innerText = bathroom_coords.latitude;
+    // document.getElementById("lng").innerText = bathroom_coords.longitude;
+
     // MAP STYLE
     const map = new mapboxgl.Map({
           // container id specified in the HTML
@@ -68,6 +73,10 @@ const initMapbox = () => {
       // var end_point = [-43.173771,-22.924371];
 
       getRoute(start, map);
+      console.log(document.getElementById("lat").innerText)
+      if (document.getElementById("lat").innerText !== "") {
+        getRoute([document.getElementById("lat").innerText,document.getElementById("lng").innerText], map);
+      }
       // Add starting point to the map
       // map.addLayer({
       //   id: 'point',

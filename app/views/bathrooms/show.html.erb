@@ -30,8 +30,7 @@
   </div>
 
   <br>
-  <div class = "btn go-button">
-    <%= link_to 'GO',root_path %>
+    <%= link_to 'GO',root_path(lat: @bathroom.latitude, lng: @bathroom.longitude) %>
   </div>
 
 </div>
