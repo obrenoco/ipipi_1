@@ -9,3 +9,20 @@ height: 100%;
     background-blend-mode: color;
 }
 
+.home-txt {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "sans-serif";
+  color: white;
+}
+
+.home-txt h3 {
+  font-family: "sans-serif";
+  margin-top: 2vh;
+  opacity: 0.9;
+}
+
+.home-txt h1 {
+  margin-top: 10vh;
+}
