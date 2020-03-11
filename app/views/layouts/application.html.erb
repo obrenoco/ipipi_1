@@ -14,8 +14,11 @@
   </head>
   <body>
     <div class="structure">
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
+      <% if current_page?(root_path) %>
+      <% else %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/flashes' %>
+      <% end %>
       <%= yield %>
       <%= javascript_include_tag 'application' %>
       <%= javascript_pack_tag 'application' %>
