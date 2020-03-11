@@ -59,13 +59,13 @@ const initMapbox = () => {
       marker: true, // Do not use the default marker style
     });
       document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
-      //    
+      //
         // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 10, minZoom: 20,  minZoom: 22, duration: 500 });
     navigator.geolocation.getCurrentPosition(function(position){});
-    
+
     map.on('load', function() {
       // make an initial directions request that
       // starts and ends at the same location
@@ -95,7 +95,7 @@ const initMapbox = () => {
         };
         if (map.getLayer('end')) {
           map.getSource('end').setData(end);
-        // } else {
+          // } else {
           map.addLayer({
             id: 'end',
             type: 'circle',
@@ -158,45 +158,23 @@ const initMapbox = () => {
                   }
                 }]
               }
+            },
+            paint: {
+              'circle-radius': 10,
+              'circle-color': '#f30'
             }
-            ]
-          };
-          if (map.getLayer('end')) {
-            map.getSource('end').setData(end);
-          } else {
-            map.addLayer({
-              id: 'end',
-              type: 'circle',
-              source: {
-                type: 'geojson',
-                data: {
-                  type: 'FeatureCollection',
-                  features: [{
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                      type: 'Point',
-                      coordinates: coords
-                    }
-                  }]
-                }
-              },
-              paint: {
-                'circle-radius': 10,
-                'circle-color': '#f30'
-              }
-            });
-          }
-          getRoute(coords, map);
-        });
+          });
+        }
+        getRoute(coords, map);
         // this is where the code from the next step will go
       });
-  }
-           // Click when page loaded
+    });
+        // Click when page loaded
     window.addEventListener('load', () => {
       document.querySelector(".mapboxgl-ctrl-geolocate").click()
-    })
-};
+    });
+  }
+}
 //
 
 // an arbitrary start will always be the same
