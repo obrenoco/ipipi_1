@@ -1,9 +1,11 @@
 // Specific CSS for your home-page
 .home {
-     height: 100%;
-    background-image: url(https://media0.giphy.com/media/dBkr9ttKjWXrG/giphy.gif?cid=790b7611c3275a1bed175f546674dfb7ddb76bdf13d45cd1&rid=giphy.gif);
+height: 100%;
+    background-image: linear-gradient(#49c2e863, #49c2e800),url(https://media0.giphy.com/media/dBkr9ttKjWXrG/giphy.gif?cid=790b761…&rid=giphy.gif);
     position: absolute;
     width: 100%;
     background-size: cover;
     background-position: center;
+    background-blend-mode: color;
 }
+
