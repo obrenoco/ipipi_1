@@ -144,9 +144,9 @@ const initMapbox = () => {
       }
   };
            // Click when page loaded
-    // window.addEventListener('load', () => {
-    //   document.querySelector(".mapboxgl-ctrl-geolocate").click()
-    // })
+    window.addEventListener('load', () => {
+      document.querySelector(".mapboxgl-ctrl-geolocate").click()
+    })
 };
       //
 
