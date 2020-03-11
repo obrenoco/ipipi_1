@@ -39,18 +39,18 @@ const initMapbox = () => {
     // ZOOM
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
     //
-      var canvas = map.getCanvasContainer();
+    var canvas = map.getCanvasContainer();
 
-    // GEOLOCATE
+      // GEOLOCATE
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
           enableHighAccuracy: true, minZoom: 22
       },
       trackUserLocation: true
     }), 'bottom-right');
-    //
+      //
 
-    // SEARCH BAR
+      // SEARCH BAR
     var geocoder = new MapboxGeocoder({ // Initialize the geocoder
       accessToken: mapboxgl.accessToken,
       countries: 'br',
@@ -59,13 +59,13 @@ const initMapbox = () => {
       marker: true, // Do not use the default marker style
     });
       document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
-    //
-      // CURRENT POSITION
+      //    
+        // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 10, minZoom: 20,  minZoom: 22, duration: 500 });
     navigator.geolocation.getCurrentPosition(function(position){});
-
+    
     map.on('load', function() {
       // make an initial directions request that
       // starts and ends at the same location
@@ -93,7 +93,6 @@ const initMapbox = () => {
           }
           ]
         };
-        console.log(end);
         if (map.getLayer('end')) {
           map.getSource('end').setData(end);
         // } else {
@@ -140,7 +139,6 @@ const initMapbox = () => {
           }
           ]
         };
-        console.log(end);
         if (map.getLayer('end')) {
           map.getSource('end').setData(end);
         } else {
@@ -160,22 +158,44 @@ const initMapbox = () => {
                   }
                 }]
               }
-            },
-            paint: {
-              'circle-radius': 10,
-              'circle-color': '#f30'
             }
-          });
-        }
-        getRoute(coords, map);
+            ]
+          };
+          if (map.getLayer('end')) {
+            map.getSource('end').setData(end);
+          } else {
+            map.addLayer({
+              id: 'end',
+              type: 'circle',
+              source: {
+                type: 'geojson',
+                data: {
+                  type: 'FeatureCollection',
+                  features: [{
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                      type: 'Point',
+                      coordinates: coords
+                    }
+                  }]
+                }
+              },
+              paint: {
+                'circle-radius': 10,
+                'circle-color': '#f30'
+              }
+            });
+          }
+          getRoute(coords, map);
+        });
+        // this is where the code from the next step will go
       });
-      // this is where the code from the next step will go
-    });
   }
            // Click when page loaded
-    // window.addEventListener('load', () => {
-    //   document.querySelector(".mapboxgl-ctrl-geolocate").click()
-    // })
+    window.addEventListener('load', () => {
+      document.querySelector(".mapboxgl-ctrl-geolocate").click()
+    })
 };
 //
 
