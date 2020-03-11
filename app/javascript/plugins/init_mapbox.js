@@ -139,33 +139,33 @@ const initMapbox = () => {
           }
           ]
         };
-        if (map.getLayer('end')) {
-          map.getSource('end').setData(end);
-        } else {
-          map.addLayer({
-            id: 'end',
-            type: 'circle',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'FeatureCollection',
-                features: [{
-                  type: 'Feature',
-                  properties: {},
-                  geometry: {
-                    type: 'Point',
-                    coordinates: coords
-                  }
-                }]
-              }
-            },
-            paint: {
-              'circle-radius': 10,
-              'circle-color': '#f30'
-            }
-          });
-        }
-        getRoute(coords, map);
+        // if (map.getLayer('end')) {
+        //   map.getSource('end').setData(end);
+        // } else {
+        //   map.addLayer({
+        //     id: 'end',
+        //     type: 'circle',
+        //     source: {
+        //       type: 'geojson',
+        //       data: {
+        //         type: 'FeatureCollection',
+        //         features: [{
+        //           type: 'Feature',
+        //           properties: {},
+        //           geometry: {
+        //             type: 'Point',
+        //             coordinates: coords
+        //           }
+        //         }]
+        //       }
+        //     },
+        //     paint: {
+        //       'circle-radius': 10,
+        //       'circle-color': '#f30'
+        //     }
+        //   });
+        // }
+        // getRoute(coords, map);
         // this is where the code from the next step will go
       });
     });
