@@ -19,7 +19,7 @@ const initMapbox = () => {
         // initial position in [lon, lat] format
       center: [document.getElementById("lat").innerText, document.getElementById("lng").innerText],
         // initial zoom
-      zoom: 14
+      zoom: 5
     });
     //
         // ADD MARKERS
@@ -39,7 +39,7 @@ const initMapbox = () => {
     // GEOLOCATE
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
-          enableHighAccuracy: true, minZoom: 22
+          enableHighAccuracy: true, zoom: 5
       },
       trackUserLocation: true
     }), 'bottom-right');
@@ -54,11 +54,11 @@ const initMapbox = () => {
       marker: true, // Do not use the default marker style
     });
       document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
-    //    
+    //
       // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 10, minZoom: 20,  minZoom: 22, duration: 500 });
+    map.fitBounds(bounds, { padding: 15, minZoom: 20,  maxZoom: 22, duration: 500 });
     navigator.geolocation.getCurrentPosition(function(position){});
 
     map.on('load', function() {
