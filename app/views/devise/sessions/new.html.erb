@@ -1,10 +1,11 @@
-<div class="container-log-in">
+<div class="container">
   <br>
   <br>
   <br>
   <h3>iPiPi.</h3>
   <h4><em>Find the closest public bathroom during Carnaval.</em></h3>
   <br>
+  <div>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -15,12 +16,12 @@
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
-
     <div class="form-actions" id ="log-in-button">
       <%= f.button :submit, "Log in"%>
     </div>
+    </div>
   <% end %>
+  </div>
 
   <%= render "devise/shared/links" %>
 </div>
