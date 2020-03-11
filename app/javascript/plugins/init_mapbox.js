@@ -4,143 +4,145 @@ import mapboxgl from 'mapbox-gl';
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
-  if ("geolocation" in navigator) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const positionArray = navigator.geolocation.getCurrentPosition(position => {
-      document.getElementById("lat").innerText = position.coords.latitude;
-      document.getElementById("lng").innerText = position.coords.longitude;
-    });
-    // MAP STYLE
-    const map = new mapboxgl.Map({
-          // container id specified in the HTML
-      container: 'map',
-        // style URL
-      style: 'mapbox://styles/chausb/ck7kq4rh70q0g1io0jk2oekjb',
-        // initial position in [lon, lat] format
-      center: [document.getElementById("lat").innerText, document.getElementById("lng").innerText],
-        // initial zoom
-      zoom: 14
-    });
-    //
-        // ADD MARKERS
-    const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup) // added this
-        .addTo(map);
-    });
-    // ZOOM
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-    //
-      var canvas = map.getCanvasContainer();
-
-    // GEOLOCATE
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-          enableHighAccuracy: true, minZoom: 22
-      },
-      trackUserLocation: true
-    }), 'bottom-right');
-    //
-
-    // SEARCH BAR
-    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
-      accessToken: mapboxgl.accessToken,
-      countries: 'br',
-      bbox: [-43.58198103399252,-23.082406097938403,-43.15107111695235,-22.86001883519016], // Set the access token
-      mapboxgl: mapboxgl, // Set the mapbox-gl instance
-      marker: true, // Do not use the default marker style
-    });
-      document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
-    //    
-      // CURRENT POSITION
-    const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 10, minZoom: 20,  minZoom: 22, duration: 500 });
-    navigator.geolocation.getCurrentPosition(function(position){});
-
-    map.on('load', function() {
-      // make an initial directions request that
-      // starts and ends at the same location
-      var start = [-43.1765868,-22.9214669];
-      // var end_point = [-43.173771,-22.924371];
-
-      getRoute(start, map);
-      // Add starting point to the map
-      // map.addLayer({
-      //   id: 'point',
-      //   type: 'circle',
-      //   source: {
-      //     type: 'geojson',
-      //     data: {
-      //       type: 'FeatureCollection',
-      //       features: [{
-      //         type: 'Feature',
-      //         properties: {},
-      //         geometry: {
-      //           type: 'Point',
-      //           coordinates: start
-      //         }
-      //       }
-      //       ]
-      //     }
-      //   },
-      //   paint: {
-      //     'circle-radius': 10,
-      //     'circle-color': '#3887be'
-      //   }
-      // });
-      map.on('click', function(e) {
-        var coordsObj = e.lngLat;
-        canvas.style.cursor = '';
-        var coords = Object.keys(coordsObj).map(function(key) {
-          return coordsObj[key];
-        });
-        var end = {
-          type: 'FeatureCollection',
-          features: [{
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'Point',
-              coordinates: coords
-            }
-          }
-          ]
-        };
-        if (map.getLayer('end')) {
-          map.getSource('end').setData(end);
-        } else {
-          map.addLayer({
-            id: 'end',
-            type: 'circle',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'FeatureCollection',
-                features: [{
-                  type: 'Feature',
-                  properties: {},
-                  geometry: {
-                    type: 'Point',
-                    coordinates: coords
-                  }
-                }]
-              }
-            },
-            paint: {
-              'circle-radius': 10,
-              'circle-color': '#f30'
-            }
-          });
-        }
-        getRoute(coords, map);
+  if (mapElement) { // only build a map if there's a div#map to inject into
+    if ("geolocation" in navigator) { // only build a map if there's a div#map to inject into
+      mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+      const positionArray = navigator.geolocation.getCurrentPosition(position => {
+        document.getElementById("lat").innerText = position.coords.latitude;
+        document.getElementById("lng").innerText = position.coords.longitude;
       });
-      // this is where the code from the next step will go
-    });
-    }
+      // MAP STYLE
+      const map = new mapboxgl.Map({
+            // container id specified in the HTML
+        container: 'map',
+          // style URL
+        style: 'mapbox://styles/chausb/ck7kq4rh70q0g1io0jk2oekjb',
+          // initial position in [lon, lat] format
+        center: [document.getElementById("lat").innerText, document.getElementById("lng").innerText],
+          // initial zoom
+        zoom: 14
+      });
+      //
+          // ADD MARKERS
+      const markers = JSON.parse(mapElement.dataset.markers);
+      markers.forEach((marker) => {
+        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
+        new mapboxgl.Marker()
+          .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup) // added this
+          .addTo(map);
+      });
+      // ZOOM
+      map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+      //
+        var canvas = map.getCanvasContainer();
+
+      // GEOLOCATE
+      map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true, minZoom: 22
+        },
+        trackUserLocation: true
+      }), 'bottom-right');
+      //
+
+      // SEARCH BAR
+      var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+        accessToken: mapboxgl.accessToken,
+        countries: 'br',
+        bbox: [-43.58198103399252,-23.082406097938403,-43.15107111695235,-22.86001883519016], // Set the access token
+        mapboxgl: mapboxgl, // Set the mapbox-gl instance
+        marker: true, // Do not use the default marker style
+      });
+        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
+      //    
+        // CURRENT POSITION
+      const bounds = new mapboxgl.LngLatBounds();
+      markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+      map.fitBounds(bounds, { padding: 10, minZoom: 20,  minZoom: 22, duration: 500 });
+      navigator.geolocation.getCurrentPosition(function(position){});
+
+      map.on('load', function() {
+        // make an initial directions request that
+        // starts and ends at the same location
+        var start = [-43.1765868,-22.9214669];
+        // var end_point = [-43.173771,-22.924371];
+
+        getRoute(start, map);
+        // Add starting point to the map
+        // map.addLayer({
+        //   id: 'point',
+        //   type: 'circle',
+        //   source: {
+        //     type: 'geojson',
+        //     data: {
+        //       type: 'FeatureCollection',
+        //       features: [{
+        //         type: 'Feature',
+        //         properties: {},
+        //         geometry: {
+        //           type: 'Point',
+        //           coordinates: start
+        //         }
+        //       }
+        //       ]
+        //     }
+        //   },
+        //   paint: {
+        //     'circle-radius': 10,
+        //     'circle-color': '#3887be'
+        //   }
+        // });
+        map.on('click', function(e) {
+          var coordsObj = e.lngLat;
+          canvas.style.cursor = '';
+          var coords = Object.keys(coordsObj).map(function(key) {
+            return coordsObj[key];
+          });
+          var end = {
+            type: 'FeatureCollection',
+            features: [{
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'Point',
+                coordinates: coords
+              }
+            }
+            ]
+          };
+          if (map.getLayer('end')) {
+            map.getSource('end').setData(end);
+          } else {
+            map.addLayer({
+              id: 'end',
+              type: 'circle',
+              source: {
+                type: 'geojson',
+                data: {
+                  type: 'FeatureCollection',
+                  features: [{
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                      type: 'Point',
+                      coordinates: coords
+                    }
+                  }]
+                }
+              },
+              paint: {
+                'circle-radius': 10,
+                'circle-color': '#f30'
+              }
+            });
+          }
+          getRoute(coords, map);
+        });
+        // this is where the code from the next step will go
+      });
+      }
+  };
            // Click when page loaded
     // window.addEventListener('load', () => {
     //   document.querySelector(".mapboxgl-ctrl-geolocate").click()

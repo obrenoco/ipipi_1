@@ -1,22 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex justify-content-between d-flex justify-content-between align-items-center">
-  <%= link_to "", class: "navbar-brand" do %>
+  <%= link_to bathrooms_path, class: "navbar-brand" do %>
     <h1>iPiPi</h1>
   <% end %>
 
   <% if user_signed_in? %>
-    <div id="hello-admin" style="position: absolute; 
-                  width: 100%; 
-                  display: flex;
-                  justify-content: center">
-      <h4>Hello Admin</h4>
+    <div id="hello-admin">
+      <h6>Hello Admin</h6>
     </div>
-     <li class="nav-item">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-     </li>
+     <div class="nav-item">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+     </div>
   <% else %>
-    <li class="nav-item">
+    <div class="nav-item">
       <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-    </li>
+    </div>
   <% end %>
 
 

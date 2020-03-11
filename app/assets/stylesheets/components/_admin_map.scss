@@ -13,8 +13,15 @@ background: #fff;
 }
 
 #admin-map {
-  position: relative;
-  width: 100%;
-  height: 600px
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+    height: 82vh !important;
+    margin: 13vh 0 0 0;
 }
 
+#hello-admin { 
+    display: flex;
+    justify-content: center;
+}
