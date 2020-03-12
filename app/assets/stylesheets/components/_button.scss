@@ -10,3 +10,26 @@
   font-weight: bolder;
   box-shadow: 0 0 0.1rem 0.2rem $highlight-blue;
 }
+
+
+///////////// HOME BUTTON
+.home-button {
+  text-align: -webkit-center;
+  margin-top: 40vh;
+}
+
+.main-btn, .main-btn:active, .main-btn:hover  {
+border-radius: 100px;
+color: #FFFFFF;
+font-size: 25px;
+font-weight: 700;
+padding: 20px 40px;
+background-color: #49c2e8;
+box-shadow: 1px 1px 20px 0px RGBA(0,72,95,0.8) !important;
+-webkit-box-shadow: 1px 1px 20px 0px #000000;
+-moz-box-shadow: 1px 1px 20px 0px #000000;
+text-decoration: none;
+display: inline-block;
+cursor: pointer;
+text-align: center;
+}

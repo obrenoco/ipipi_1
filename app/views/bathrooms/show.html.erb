@@ -1,7 +1,7 @@
 <br>
 <div class="bathroom-card">
  <div id="back-icon">
-    <%= link_to root_path do %>
+    <%= link_to bathrooms_path do %>
       <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
     <% end %>
   </div>
@@ -32,12 +32,9 @@
     </div>
 
     <br>
-    <div class = "btn go-button">
-      <div style="margin: 0 auto;"><%= link_to 'GO',root_path %></div>
-    </div>
 
   <br>
-    <%= link_to 'GO',root_path(lng: @bathroom.longitude, lat: @bathroom.latitude) %>
+    <%= link_to 'GO',bathrooms_path(lng: @bathroom.longitude, lat: @bathroom.latitude), class: "btn go-button" %>
   </div>
 </div>
 
