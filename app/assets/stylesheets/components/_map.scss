@@ -18,17 +18,11 @@
 }
 
 ///////////////////// REMOVE RADIUS FROM CURRENT POSITION
-// .mapboxgl-user-location-accuracy-circle {
-//   width: 10px !important;
-//   height: 10px !important;
-//   display: none !important;
-// }
-
 .mapboxgl-user-location-accuracy-circle {
-      display: block !important;
-
+  width: 10px !important;
+  height: 10px !important;
+//   display: none !important;
 }
-
 
 // /////////////////// || STYLE || MAP + SEARCH
 
