@@ -14,8 +14,10 @@ const adminMap = () => {
     // ADD MARKERS
     const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
+        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
         new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup) // added this
           .addTo(map);
     });
     //
@@ -50,6 +52,7 @@ const adminMap = () => {
     map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
     
 
+    // CREATE BATHROOM
    map.on('click', function(e) {
     document.getElementById('create-button').classList.remove("hidden")
     let longitude = e.lngLat.lng
@@ -57,6 +60,17 @@ const adminMap = () => {
     document.getElementById('bathroom_longitude').value = longitude
     document.getElementById('bathroom_latitude').value = latitude
    });
+
+    // DELETE BATHROOM
+   document.querySelectorAll('[aria-label="Map marker"]').forEach(marker => {
+      marker.addEventListener("click", () => {
+        console.log(marker);
+      // Do something (callback)
+      });
+    });
+
+   markers.forEach(marker => console.log(marker));
+
   }
 };
 
