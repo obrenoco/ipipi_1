@@ -1,24 +1,24 @@
 <br>
 
  <div class="back-icon">
-    <%= link_to root_path do %>
-      <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
-    <%end%>
-  </div>
+  <%= link_to bathrooms_path do %>
+    <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
+  <%end%>
+ </div>
+
+<br>
 
 <div class="done-container">
-  <h1> THANK YOU </h1>
+  <h3><em> Thank you for using iPiPi </em></h3>
 
   <div class="toilet-infos">
 
   <!-- ADD RATING SYSTEM -->
-    <% @bathroom.rating.times do %>
-      <i class="fas fa-star" id = "star-icon"></i>
-    <%end%>
-    <% (5 - @bathroom.rating).times do %>
       <i class="far fa-star" id = "star-icon"></i>
-    <% end %>
-
+      <i class="far fa-star" id = "star-icon"></i>
+      <i class="far fa-star" id = "star-icon"></i>
+      <i class="far fa-star" id = "star-icon"></i>
+      <i class="far fa-star" id = "star-icon"></i>
     <!--  -->
   </div>
 
