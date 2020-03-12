@@ -29,5 +29,8 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-# add geocoder gem-file
+# add geocoder gem for getting the current position
 gem 'geocoder'
+
+# add twilio gem for sending whatsapp messages
+gem 'twilio-ruby'
