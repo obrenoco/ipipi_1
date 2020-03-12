@@ -1,0 +1,7 @@
+
+<p><%= bathroom.location %></p>
+<% if bathroom.enabled? %>
+	<%= link_to 'Disable', bathroom_path(bathroom.id), method: 'patch', class: 'form-actions' %>
+<% else %>
+	<%= link_to 'Enable', bathroom_path(bathroom.id), method: 'patch', class: 'form-actions' %>
+<% end %>
