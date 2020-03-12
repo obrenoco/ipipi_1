@@ -4,7 +4,9 @@ class UsersController < ApplicationController
     @markers = @bathrooms.map do |bathroom|
       {
         lat: bathroom.latitude,
-        lng: bathroom.longitude
+        lng: bathroom.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bathroom: bathroom })
+
       }
     end
     @users = User.all

@@ -4,7 +4,11 @@ text-transform: uppercase;
 text-decoration: none;
 letter-spacing: 3px;
 }
-
+.btn:active {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25);
+    background-color: #00b1e8;
+}
 .form-actions {
 color: white !important;;
 background: #4EC2E8;

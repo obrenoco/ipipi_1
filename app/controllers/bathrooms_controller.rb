@@ -1,5 +1,5 @@
 class BathroomsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: :update
 
   def index
   	@bathrooms = Bathroom.geocoded
@@ -8,6 +8,7 @@ class BathroomsController < ApplicationController
       {
         lat: bathroom.latitude,
         lng: bathroom.longitude,
+        bathroom_id: bathroom.id,
         infoWindow: render_to_string(partial: "info_window", locals: { bathroom: bathroom })
       }
     end
@@ -27,6 +28,12 @@ class BathroomsController < ApplicationController
     redirect_to users_path
   end
 
+  def update
+    @bathroom = Bathroom.find(params[:id])
+    @bathroom.enabled = !@bathroom.enabled
+    @bathroom.save
+    redirect_to users_path
+  end
 
   private
 
