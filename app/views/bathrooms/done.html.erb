@@ -10,6 +10,7 @@
   <h1> THANK YOU </h1>
 
   <div class="toilet-infos">
+
   <!-- ADD RATING SYSTEM -->
     <% @bathroom.rating.times do %>
       <i class="fas fa-star" id = "star-icon"></i>
@@ -17,6 +18,7 @@
     <% (5 - @bathroom.rating).times do %>
       <i class="far fa-star" id = "star-icon"></i>
     <% end %>
+
     <!--  -->
   </div>
 
@@ -42,7 +44,6 @@
     </ul>
   </div>
   <!--------------------->
-
   <br>
-    <%= link_to 'THANKS',bathrooms_path %>
+    <%= link_to 'FINISH',bathrooms_path %>
   </div>
