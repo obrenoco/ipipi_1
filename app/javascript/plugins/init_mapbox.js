@@ -46,7 +46,8 @@ const initMapbox = () => {
       // make an initial directions request that
       // starts and ends at the same location
       var start = [document.getElementById("lng").innerText, document.getElementById("lat").innerText];
-      getRoute(start, map);
+      // getRoute(start, map);    // this line define the start point
+      console.log(start);
 
       if (document.getElementById("bathroom-lat").innerText != "") {
         var coordsObj = {
@@ -95,7 +96,7 @@ const initMapbox = () => {
             }
           });
         }
-        getRoute(coords, map);
+        // getRoute(coords, map);  // this line define the end point
       }
       map.on('click', function(e) {
         var coordsObj = e.lngLat;
