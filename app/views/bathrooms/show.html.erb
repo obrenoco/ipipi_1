@@ -10,30 +10,54 @@
 
     <br>
 
-
     <div class="toilet-infos">
       <i class="fas fa-toilet" id = "toilet-icon"></i>
       <br>
-    <div class="show-card-infos">
-      <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
-      <h1><em><%= @bathroom.location %></em></h1>
-      <br>
-    </div>
+      <div class="show-card-infos">
+        <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
+        <h1><em><%= @bathroom.location %></em></h1>
+        <br>
+      </div>
       <br>
       <div class="stars">
-      <% @bathroom.rating.times do %>
-        <i class="fas fa-star" id = "star-icon"></i>
-      <% end %>
-      <% (5 - @bathroom.rating).times do %>
-        <i class="far fa-star" id = "star-icon"></i>
-      <% end %>
+        <% @bathroom.rating.times do %>
+          <i class="fas fa-star" id = "star-icon"></i>
+        <% end %>
+        <% (5 - @bathroom.rating).times do %>
+          <i class="far fa-star" id = "star-icon"></i>
+        <% end %>
       </div>
       <br>
     </div>
 
     <br>
-
+  <span class="hidden" id="bathroom-lat"><%= @bathroom.latitude %></span>
+  <span class="hidden" id="bathroom-lng"><%= @bathroom.longitude %></span>
   <br>
-    <%= link_to 'GO',bathrooms_path(lng: @bathroom.longitude, lat: @bathroom.latitude), class: "btn go-button" %>
+
+    <a class="btn go-button" id="google-maps" href="" target="_blank">GO</a>
   </div>
 </div>
+
+<script>
+  // Give link to google maps with directions
+  let originLat = 0;
+  let originLng = 0;
+  navigator.geolocation.getCurrentPosition(position => {
+    originLat = position.coords.latitude;
+    originLng = position.coords.longitude;
+    console.log(originLng);
+    const googleLink = document.getElementById("google-maps");
+    const bathroomLat = parseFloat(document.getElementById("bathroom-lat").innerText);
+    const bathroomLng = parseFloat(document.getElementById("bathroom-lng").innerText);
+    const completeLink = "https://www.google.com/maps/dir/?api=1&origin=" + originLat + "," +
+      originLng + "&destination=" + bathroomLat + "," + bathroomLng + "&travelmode=walking";
+    googleLink.href = completeLink;
+  });
+</script>
+
+<!--  I don't think we need to display the longitude and latitude infos to
+  the user in the show page but the walking distance from the location.
+
+<h1> Latitude: <%= @bathroom.latitude %> </h1>
+    <h1>Longitude: <%= @bathroom.longitude %></h1> -->

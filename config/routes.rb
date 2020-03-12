@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-
   resources :users, only: [:index]
+  post :notification, to: 'notification#send'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

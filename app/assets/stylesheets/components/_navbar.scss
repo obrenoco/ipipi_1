@@ -8,6 +8,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $sky-blue;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -35,3 +36,11 @@
   color: white;
   margin: 0;
 }
+
+.center {
+  display: center;
+}
+
+// .shadowy {
+//   box-shadow: 10px 10px;
+// }
