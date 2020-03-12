@@ -6,16 +6,14 @@ const initMapbox = () => {
 
   if ((mapElement) && ("geolocation" in navigator)) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+
+      // POSITION SAVING
     const positionArray = navigator.geolocation.getCurrentPosition(position => {
       document.getElementById("lat").innerText = position.coords.latitude;
       document.getElementById("lng").innerText = position.coords.longitude;
     });
 
-    // let bathroom_coords = []
-    // document.getElementById("lat").innerText = bathroom_coords.latitude;
-    // document.getElementById("lng").innerText = bathroom_coords.longitude;
-
-    // MAP STYLE
+      // MAP STYLE
     const map = new mapboxgl.Map({
           // container id specified in the HTML
       container: 'map',
@@ -26,41 +24,19 @@ const initMapbox = () => {
         // initial zoom
       zoom: 14
     });
-    //
-        // ADD MARKERS
     const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup) // added this
-        .addTo(map);
-    });
-    // ZOOM
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-    //
-    var canvas = map.getCanvasContainer();
 
-      // GEOLOCATE
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-          enableHighAccuracy: true, minZoom: 22
-      },
-      trackUserLocation: true
-    }), 'bottom-right');
-      //
+      // ADD MARKERS
+    addMarkers(map, markers);
+
+      // ZOOM AND GEOLOCATE
+    var canvas = map.getCanvasContainer();
+    zoomAndGeolocate(map);
 
       // SEARCH BAR
-    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
-      accessToken: mapboxgl.accessToken,
-      countries: 'br',
-      bbox: [-43.58198103399252,-23.082406097938403,-43.15107111695235,-22.86001883519016], // Set the access token
-      mapboxgl: mapboxgl, // Set the mapbox-gl instance
-      marker: true, // Do not use the default marker style
-    });
-      document.getElementById('geocoder').appendChild(geocoder.onAdd(map));   //#NEW CODE
-      //
-        // CURRENT POSITION
+    document.getElementById('geocoder').appendChild(generateGeocoder(mapboxgl).onAdd(map));   //#NEW CODE
+
+      // CURRENT POSITION
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 10, minZoom: 20,  minZoom: 22, duration: 500 });
@@ -171,18 +147,53 @@ const initMapbox = () => {
     });
         // Click when page loaded
     window.addEventListener('load', () => {
-      document.querySelector(".mapboxgl-ctrl-geolocate").click()
+      document.querySelector(".mapboxgl-ctrl-geolocate").click();
     });
   }
 }
-//
+
+const addMarkers = (map, markers) => {
+  // ADD MARKERS
+  markers.forEach((marker) => {
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // added this
+    new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup) // added this
+      .addTo(map);
+  });
+}
+
+const zoomAndGeolocate = (map) => {
+    // ZOOM
+  map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+  // var canvas = map.getCanvasContainer();
+
+    // GEOLOCATE
+  map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true, minZoom: 22
+    },
+    trackUserLocation: true
+  }), 'bottom-right');
+}
+
+const generateGeocoder = (mapboxgl) => {
+  const geocoder = new MapboxGeocoder({ // Initialize the geocoder
+    accessToken: mapboxgl.accessToken,
+    countries: 'br',
+    bbox: [-43.58198103399252,-23.082406097938403,-43.15107111695235,-22.86001883519016], // Set the access token
+    mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    marker: true, // Do not use the default marker style
+  });
+  return geocoder;
+}
 
 // an arbitrary start will always be the same
 // only the end or destination will change
 // this is where the code for the next step will go
 
 // create a function to make a directions request
-function getRoute(end_point, map) {
+let getRoute = (end_point, map) => {
   // make a directions request using cycling profile
   // an arbitrary start will always be the same
   // only the end or destination will change
@@ -209,7 +220,6 @@ function getRoute(end_point, map) {
       map.getSource('route').setData(geojson);
     } else { // otherwise, make a new request
       console.log("Rota nao existe, criando rota...");
-
       map.addLayer({
         id: 'route',
         type: 'line',
