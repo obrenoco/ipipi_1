@@ -1,6 +1,49 @@
-<h1> THIS IS THE DONE PAGE </h1>
+<br>
 
-<h1> THX 4 USING iPiPi ;) </h1>
+ <div class="back-icon">
+    <%= link_to root_path do %>
+      <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
+    <%end%>
+  </div>
 
-<!--1- abrir nova aba no brwoser p/ link externo || link_to external URL -->
-<!--  2 trocar página atual para o done || JAVASCRIPT-->
+<div class="done-container">
+  <h1> THANK YOU </h1>
+
+  <div class="toilet-infos">
+  <!-- ADD RATING SYSTEM -->
+    <% @bathroom.rating.times do %>
+      <i class="fas fa-star" id = "star-icon"></i>
+    <%end%>
+    <% (5 - @bathroom.rating).times do %>
+      <i class="far fa-star" id = "star-icon"></i>
+    <% end %>
+    <!--  -->
+  </div>
+
+<br>
+
+  <!------- ICONS ------->
+  <div class="share-icons">
+    <ul>
+
+      <!-- SMS -->
+      <li>
+        <a href="https://www.google.com/">
+          <i class="fas fa-sms fa-2x"></i>
+        </a>
+      </li>
+
+      <!-- WHATSAPP -->
+      <li>
+        <a href="https://www.whatsapp.com/">
+          <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <!--------------------->
+
+  <br>
+    <%= link_to 'THANKS',bathrooms_path %>
+  </div>
