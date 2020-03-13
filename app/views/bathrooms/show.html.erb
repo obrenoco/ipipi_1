@@ -19,20 +19,14 @@
         <br>
       </div>
       <br>
-        <div class="stars">
-          <% @bathroom.rating.times do %>
-            <i class="fas fa-star" id = "star-icon"></i>
-          <% end %>
-          <% (5 - @bathroom.rating).times do %>
-            <i class="far fa-star" id = "star-icon"></i>
-          <% end %>
-        </div>
+
       <br>
     </div>
 
     <br>
   <span class="hidden" id="bathroom-lat"><%= @bathroom.latitude %></span>
   <span class="hidden" id="bathroom-lng"><%= @bathroom.longitude %></span>
+  <span class="hidden" id="bathroom-id"><%= @bathroom.id %></span>
   <br>
       <p class="btn go-button" id="google-maps">GO</p>
   </div>
@@ -51,10 +45,12 @@
     console.log(originLng);
     const bathroomLat = parseFloat(document.getElementById("bathroom-lat").innerText);
     const bathroomLng = parseFloat(document.getElementById("bathroom-lng").innerText);
+    const bathroomId = parseFloat(document.getElementById("bathroom-id").innerText);
     const completeLink = "https://www.google.com/maps/dir/?api=1&origin=" + originLat + "," +
       originLng + "&destination=" + bathroomLat + "," + bathroomLng + "&travelmode=walking";
-    window.history.back();
-    window.open(completeLink, "_blank");
+    const maps = window.open(completeLink, "_blank");
+    const done = window.location.replace("/bathrooms/" + bathroomId + "/done");
+    return maps, done;
   });
 });
 </script>
