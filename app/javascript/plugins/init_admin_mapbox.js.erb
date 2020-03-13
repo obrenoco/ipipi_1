@@ -57,19 +57,10 @@ const adminMap = () => {
     document.getElementById('create-button').classList.remove("hidden")
     let longitude = e.lngLat.lng
     let latitude = e.lngLat.lat
+    const geocoderService = platform.getGeocodingService();
     document.getElementById('bathroom_longitude').value = longitude
     document.getElementById('bathroom_latitude').value = latitude
    });
-
-    // DELETE BATHROOM
-   document.querySelectorAll('[aria-label="Map marker"]').forEach(marker => {
-      marker.addEventListener("click", () => {
-        console.log(marker);
-      // Do something (callback)
-      });
-    });
-
-   markers.forEach(marker => console.log(marker));
 
   }
 };
