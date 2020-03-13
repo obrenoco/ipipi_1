@@ -1,56 +1,55 @@
-<br>
-
- <div class="back-icon">
-  <%= link_to bathrooms_path do %>
-    <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
-  <%end%>
- </div>
-
-<br>
-
 <div class="done-container">
-  <h3><em> Thank you for using iPiPi </em></h3>
-
-  <div class="toilet-infos">
-
-  <!-- ADD RATING SYSTEM -->
+  <div class="done-card">
+      <!--  -->
+    <!-- EXIT BUTTOM -->
+    <div class="back-icon">
+      <%= link_to bathrooms_path do %>
+        <i class="fas fa-times" id = "back-icon"> </i>
+      <%end%>
+    </div>
+    <!--  -->
+    <div class="txt-done">
+      <h1> <strong>THANK YOU !</strong></h1>
+    </div>
+    <div class="stars">
+    <!-- ADD RATING SYSTEM -->
     <span data-id="<%= @bathroom.id %>" id="bathroom-id"></span>
-    <i data-id="1" class="far fa-star" id="star-icon"></i>
-    <i data-id="2" class="far fa-star" id="star-icon"></i>
-    <i data-id="3" class="far fa-star" id="star-icon"></i>
-    <i data-id="4" class="far fa-star" id="star-icon"></i>
-    <i data-id="5" class="far fa-star" id="star-icon"></i>
+    <i data-id="1" class="far fa-star fa-2x" id="star-icon"></i>
+    <i data-id="2" class="far fa-star fa-2x" id="star-icon"></i>
+    <i data-id="3" class="far fa-star fa-2x" id="star-icon"></i>
+    <i data-id="4" class="far fa-star fa-2x" id="star-icon"></i>
+    <i data-id="5" class="far fa-star fa-2x" id="star-icon"></i>
     <!--  -->
   </div>
 <span class="hidden" id="toilet-lat"><%= @bathroom.latitude %></span>
 <span class="hidden" id="toilet-lng"><%= @bathroom.longitude %></span>
 
-<br>
-
-  <!------- ICONS ------->
-  <div class="share-icons">
-    <ul>
-      <!-- WHATSAPP -->
+    <!-- FINISH BUTTON  -->
+    <%= link_to 'FINISH', bathrooms_path,class: "done-blue-btn", id: "finish" %>
+    <!------- ICONS ------->
+    <div class="share-icons">
+      <ul>
+         <!-- WHATSAPP -->
       <li>
-
         <a id="whatsapp-share" href="" target="_blank">
-          <i class="fab fa-whatsapp fa-2x"></i>
+          <i class="fab fa-whatsapp fa-3x"></i>
         </a>
       </li>
 
-      <!-- SMS -->
-      <li>
-        <a href="https://www.google.com/">
-          <i class="fas fa-sms fa-2x"></i>
-        </a>
-      </li>
 
-    </ul>
+        <!-- SMS -->
+        <li>
+          <a href="https://www.google.com/">
+            <i class="fas fa-sms fa-3x"></i>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+    <!--------------------->
+    <br>
   </div>
-  <!--------------------->
-  <br>
-    <%= link_to 'FINISH', bathrooms_path, id: "finish" %>
-  </div>
+</div>
 
 <script>
   // Give link to google maps with directions
