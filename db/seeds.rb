@@ -17,11 +17,14 @@ b1.update(latitude: -22.938796, longitude: -43.175551)
 b2 = Bathroom.create!(location: "R. Corrêa Dutra", rating: 5, enabled: true)
 b2.update(latitude: -22.926973, longitude: -43.178753)
 
-b3 = Bathroom.create!(location: "Av. Nossa Sra. de Copabacana", rating: 5,enabled: true, latitude: -22.968544, longitude: -43.183602)
+b3 = Bathroom.create!(location: "Av. Nossa Sra. de Copabacana", rating: 5,enabled: true)
+b3.update(latitude: -22.968544, longitude: -43.183602)
 
-b4 = Bathroom.create!(location: "R. Tobias do Amaral", rating: 1, enabled: true, latitude: -22.940538, longitude: -43.200519)
+b4 = Bathroom.create!(location: "R. Tobias do Amaral", rating: 1, enabled: true)
+b4.update(latitude: -22.940538, longitude: -43.200519)
 
-b5 = Bathroom.create!(location: "R. Pinheiro Machado", rating: 4, enabled: false, latitude: -22.938942, longitude: -43.183093)
+b5 = Bathroom.create!(location: "R. Pinheiro Machado", rating: 4, enabled: false)
+b5.update(latitude: -22.938942, longitude: -43.183093)
 
 b6 = Bathroom.create!(location: "R. Mena Barreto", rating: 3, enabled: false)
 b6.update(latitude: -22.955184, longitude: -43.188565)
