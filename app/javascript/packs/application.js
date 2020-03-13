@@ -43,22 +43,26 @@ if (bathroomElement) {
 document.querySelectorAll(".mapboxgl-marker").forEach((element) => {
   console.log(element);
   element.addEventListener("click", (event) => {
-    let originLat = 0;
-    let originLng = 0;
-    const bathroomLat = parseFloat(document.getElementById("card-bathroom-lat").innerText);
-    const bathroomLng = parseFloat(document.getElementById("card-bathroom-lng").innerText);
-    console.log(bathroomLat);
-    navigator.geolocation.getCurrentPosition(position => {
-      originLat = position.coords.latitude;
-      originLng = position.coords.longitude;
-      console.log(originLng);
-      const distanceDisplay = getElementById("distance-to");
-      let from = turf.point([originLat,originLng]);
-      let to = turf.point([bathroomLat,bathroomLng]);
-      let options = {units: 'kilometers'};
-      let distance = turf.distance(from, to, options);
-      console.log(distance);
-      distanceDisplay.innerHTML = distance;
+
+      element.addEventListener("load", (event) => {
+        let originLat = 0;
+        let originLng = 0;
+        const bathroomLat = parseFloat(document.getElementById("card-bathroom-lat").innerText);
+        const bathroomLng = parseFloat(document.getElementById("card-bathroom-lng").innerText);
+        console.log(bathroomLat);
+        navigator.geolocation.getCurrentPosition(position => {
+          originLat = position.coords.latitude;
+          originLng = position.coords.longitude;
+          console.log(originLng);
+          const distanceDisplay = getElementById("distance-to");
+          let from = turf.point([originLat,originLng]);
+          let to = turf.point([bathroomLat,bathroomLng]);
+          let options = {units: 'kilometers'};
+          let distance = turf.distance(from, to, options);
+          console.log(distance);
+          distanceDisplay.innerHTML = distance;
+        });
+
     });
   });
 });

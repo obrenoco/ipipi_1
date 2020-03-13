@@ -11,3 +11,42 @@
 <span class="hidden" id="bathroom-lat"><%= params[:lat] %></span>
 <span class="hidden" id="bathroom-lng"><%= params[:lng] %></span>
 <div id="geocoder" class="geocoder"></div>
+
+<script>
+  // seleciona o nó alvo
+  var target = document.querySelector('#map');
+
+  // cria uma nova instância de observador
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.addedNodes[0].className === "mapboxgl-popup-content") {
+        console.log(mutation.type);
+        console.log(mutation.addedNodes[0].className);
+        console.log(mutation.addedNodes[0].value);
+        navigator.geolocation.getCurrentPosition(position => {
+          var originLat = position.coords.latitude;
+          var originLng = position.coords.longitude;
+          console.log(originLng);
+          const bathroomLat = parseFloat(document.getElementById("card-bathroom-lat").innerText);
+          const bathroomLng = parseFloat(document.getElementById("card-bathroom-lng").innerText);
+          console.log(bathroomLat);
+          const distanceDisplay = document.getElementById("distance-to");
+          let from = turf.point([originLat,originLng]);
+          let to = turf.point([bathroomLat,bathroomLng]);
+          let options = {units: 'kilometers'};
+          let distance = turf.distance(from, to, options);
+          console.log(distance);
+          distanceDisplay.innerHTML = `${Math.round((distance + Number.EPSILON) * 100) / 100} km`;
+        },
+        () => {},
+        {maximumAge:60000, timeout:5000, enableHighAccuracy:true}
+        );
+      }
+    });
+  });
+  // configuração do observador:
+  var config = { childList: true, subtree: true };
+
+  // passar o nó alvo, bem como as opções de observação
+  observer.observe(target, config);
+</script>

@@ -6,3 +6,24 @@
 <span class="hidden" id="card-bathroom-lng"><%= bathroom.longitude %></span>
 
 <%= link_to 'GO', bathroom_path(bathroom.id), class: 'form-actions' %>
+
+<script>
+  // console.log("teste");
+  // let originLat = 0;
+  // let originLng = 0;
+  // navigator.geolocation.getCurrentPosition(position => {
+  //   originLat = position.coords.latitude;
+  //   originLng = position.coords.longitude;
+  //   console.log(originLng);
+  //   const bathroomLat = parseFloat(document.getElementById("card-bathroom-lat").innerText);
+  //   const bathroomLng = parseFloat(document.getElementById("card-bathroom-lng").innerText);
+  //   console.log(bathroomLat);
+  //   const distanceDisplay = document.getElementById("distance-to");
+  //   let from = turf.point([originLat,originLng]);
+  //   let to = turf.point([bathroomLat,bathroomLng]);
+  //   let options = {units: 'kilometers'};
+  //   let distance = turf.distance(from, to, options);
+  //   console.log(distance);
+  //   distanceDisplay.innerHTML = distance;
+  // });
+</script>
