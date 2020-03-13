@@ -1,0 +1,7 @@
+
+#Creating the meta tags
+
+meta_product_name: "iPiPi"
+meta_title: "Cheirinho de sucesso"
+meta_description: "Find the closest public bathroom"
+meta_image: "logo.png" # should exist in `app/assets/images/` # Has to be changed
