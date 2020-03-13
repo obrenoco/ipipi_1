@@ -45,13 +45,13 @@ document.querySelectorAll(".mapboxgl-marker").forEach((element) => {
   element.addEventListener("click", (event) => {
     let originLat = 0;
     let originLng = 0;
+    const bathroomLat = parseFloat(document.getElementById("card-bathroom-lat").innerText);
+    const bathroomLng = parseFloat(document.getElementById("card-bathroom-lng").innerText);
+    console.log(bathroomLat);
     navigator.geolocation.getCurrentPosition(position => {
       originLat = position.coords.latitude;
       originLng = position.coords.longitude;
       console.log(originLng);
-      console.log(originLng);
-      const bathroomLat = parseFloat(document.getElementById("bathroom-lat").innerText);
-      const bathroomLng = parseFloat(document.getElementById("bathroom-lng").innerText);
       const distanceDisplay = getElementById("distance-to");
       let from = turf.point([originLat,originLng]);
       let to = turf.point([bathroomLat,bathroomLng]);
