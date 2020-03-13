@@ -32,7 +32,6 @@
     <ul>
       <!-- WHATSAPP -->
       <li>
-
         <a id="whatsapp-share" href="" target="_blank">
           <i class="fab fa-whatsapp fa-2x"></i>
         </a>
@@ -57,6 +56,6 @@
   const whatsappLink = document.getElementById("whatsapp-share");
   const bathroomLat = parseFloat(document.getElementById("toilet-lat").innerText);
   const bathroomLng = parseFloat(document.getElementById("toilet-lng").innerText);
-  const completeLink = "whatsapp://send?text=https://www.google.com/maps/search/?api=1&query="+ bathroomLat + "," + bathroomLng;
+  const completeLink = `whatsapp://send?text=https://www.google.com/maps/search/?api=1&query=${bathroomLat},${bathroomLng}`;
   whatsappLink.href = completeLink;
 </script>
