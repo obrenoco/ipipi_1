@@ -47,7 +47,7 @@ const initMapbox = () => {
       // starts and ends at the same location
       var start = [document.getElementById("lng").innerText, document.getElementById("lat").innerText];
       // getRoute(start, map);    // this line define the start point
-      console.log(start);
+      // console.log(start);
 
       if (document.getElementById("bathroom-lat").innerText != "") {
         var coordsObj = {
