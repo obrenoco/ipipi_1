@@ -35,6 +35,24 @@ class BathroomsController < ApplicationController
     redirect_to users_path
   end
 
+  def add_rating
+    @bathroom = Bathroom.find(params[:id])
+    if @bathroom.times_rated.nil?
+      @bathroom.rating = params[:rating]
+      @bathroom.times_rated = 1
+    else
+      current_total_rating = @bathroom.rating * @bathroom.times_rated
+      new_rating = (current_total_rating + params[:rating].to_i) / (@bathroom.times_rated + 1)
+      @bathroom.rating = new_rating
+      @bathroom.times_rated += 1
+    end
+    @bathroom.save
+
+    render json: {
+      rating: @bathroom.rating
+    }
+  end
+
   private
 
   def bathroom_params

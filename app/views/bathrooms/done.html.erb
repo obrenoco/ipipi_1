@@ -1,3 +1,50 @@
-<h1> THIS IS THE DONE PAGE </h1>
+<br>
 
-<h1> THX 4 USING iPiPi ;) </h1>
+ <div class="back-icon">
+  <%= link_to bathrooms_path do %>
+    <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
+  <%end%>
+ </div>
+
+<br>
+
+<div class="done-container">
+  <h3><em> Thank you for using iPiPi </em></h3>
+
+  <div class="toilet-infos">
+
+  <!-- ADD RATING SYSTEM -->
+    <span data-id="<%= @bathroom.id %>" id="bathroom-id"></span>
+    <i data-id="1" class="far fa-star" id="star-icon"></i>
+    <i data-id="2" class="far fa-star" id="star-icon"></i>
+    <i data-id="3" class="far fa-star" id="star-icon"></i>
+    <i data-id="4" class="far fa-star" id="star-icon"></i>
+    <i data-id="5" class="far fa-star" id="star-icon"></i>
+    <!--  -->
+  </div>
+
+<br>
+
+  <!------- ICONS ------->
+  <div class="share-icons">
+    <ul>
+      <!-- WHATSAPP -->
+      <li>
+        <a href="https://www.whatsapp.com/">
+          <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+      </li>
+
+      <!-- SMS -->
+      <li>
+        <a href="https://www.google.com/">
+          <i class="fas fa-sms fa-2x"></i>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <!--------------------->
+  <br>
+    <%= link_to 'FINISH', bathrooms_path, id: "finish" %>
+  </div>
