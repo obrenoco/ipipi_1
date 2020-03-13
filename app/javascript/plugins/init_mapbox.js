@@ -22,7 +22,7 @@ const initMapbox = () => {
         // initial position in [lon, lat] format
       center: [document.getElementById("lat").innerText, document.getElementById("lng").innerText],
         // initial zoom
-      zoom: 14
+      zoom: 7
     });
     const markers = JSON.parse(mapElement.dataset.markers);
 
