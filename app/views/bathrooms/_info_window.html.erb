@@ -1,3 +1,8 @@
 
 <p><%= bathroom.location %></p>
+<p id="distance-to">0</p>
+
+<span class="hidden" id="card-bathroom-lat"><%= bathroom.latitude %></span>
+<span class="hidden" id="card-bathroom-lng"><%= bathroom.longitude %></span>
+
 <%= link_to 'GO', bathroom_path(bathroom.id), class: 'form-actions' %>

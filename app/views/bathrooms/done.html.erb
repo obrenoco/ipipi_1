@@ -22,6 +22,8 @@
     <i data-id="5" class="far fa-star" id="star-icon"></i>
     <!--  -->
   </div>
+<span class="hidden" id="toilet-lat"><%= @bathroom.latitude %></span>
+<span class="hidden" id="toilet-lng"><%= @bathroom.longitude %></span>
 
 <br>
 
@@ -30,7 +32,8 @@
     <ul>
       <!-- WHATSAPP -->
       <li>
-          <a href="whatsapp://send?text=Hello%20World!">
+
+        <a id="whatsapp-share" href="" target="_blank">
           <i class="fab fa-whatsapp fa-2x"></i>
         </a>
       </li>
@@ -48,3 +51,12 @@
   <br>
     <%= link_to 'FINISH', bathrooms_path, id: "finish" %>
   </div>
+
+<script>
+  // Give link to google maps with directions
+  const whatsappLink = document.getElementById("whatsapp-share");
+  const bathroomLat = parseFloat(document.getElementById("toilet-lat").innerText);
+  const bathroomLng = parseFloat(document.getElementById("toilet-lng").innerText);
+  const completeLink = "whatsapp://send?text=https://www.google.com/maps/search/?api=1&query="+ bathroomLat + "," + bathroomLng;
+  whatsappLink.href = completeLink;
+</script>
