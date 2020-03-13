@@ -5,7 +5,7 @@
       <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
     <% end %>
   </div>
-
+  <br>
   <div class="show-container">
 
     <br>
@@ -19,41 +19,40 @@
         <br>
       </div>
       <br>
-      <div class="stars">
-        <% @bathroom.rating.round.times do %>
-          <i class="fas fa-star" id = "star-icon"></i>
-        <% end %>
-        <% (5 - @bathroom.rating.round).times do %>
-          <i class="far fa-star" id = "star-icon"></i>
-        <% end %>
-      </div>
+      
       <br>
     </div>
 
     <br>
   <span class="hidden" id="bathroom-lat"><%= @bathroom.latitude %></span>
   <span class="hidden" id="bathroom-lng"><%= @bathroom.longitude %></span>
+  <span class="hidden" id="bathroom-id"><%= @bathroom.id %></span>
   <br>
-
-    <a class="btn go-button" id="google-maps" href="" target="_blank">GO</a>
+      <p class="btn go-button" id="google-maps">GO</p>
   </div>
 </div>
 
 <script>
   // Give link to google maps with directions
+  const googleLink = document.getElementById("google-maps");
+  googleLink.addEventListener('click', (e) => {
+  e.preventDefault();
   let originLat = 0;
   let originLng = 0;
   navigator.geolocation.getCurrentPosition(position => {
     originLat = position.coords.latitude;
     originLng = position.coords.longitude;
     console.log(originLng);
-    const googleLink = document.getElementById("google-maps");
     const bathroomLat = parseFloat(document.getElementById("bathroom-lat").innerText);
     const bathroomLng = parseFloat(document.getElementById("bathroom-lng").innerText);
+    const bathroomId = parseFloat(document.getElementById("bathroom-id").innerText);
     const completeLink = "https://www.google.com/maps/dir/?api=1&origin=" + originLat + "," +
       originLng + "&destination=" + bathroomLat + "," + bathroomLng + "&travelmode=walking";
-    googleLink.href = completeLink;
+    const maps = window.open(completeLink, "_blank");
+    const done = window.location.replace("/bathrooms/" + bathroomId + "/done");
+    return maps, done;
   });
+});
 </script>
 
 <!--  I don't think we need to display the longitude and latitude infos to
