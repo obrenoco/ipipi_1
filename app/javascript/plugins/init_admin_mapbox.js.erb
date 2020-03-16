@@ -59,17 +59,8 @@ const adminMap = () => {
     let latitude = e.lngLat.lat
     document.getElementById('bathroom_longitude').value = longitude
     document.getElementById('bathroom_latitude').value = latitude
+    document.getElementById('bathroom_rating').value = 0
    });
-
-    // DELETE BATHROOM
-   document.querySelectorAll('[aria-label="Map marker"]').forEach(marker => {
-      marker.addEventListener("click", () => {
-        console.log(marker);
-      // Do something (callback)
-      });
-    });
-
-   markers.forEach(marker => console.log(marker));
 
   }
 };

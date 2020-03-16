@@ -1,12 +1,12 @@
 .btn-sky-blue {
   background-color: $sky-blue;
-  color: white;
+  color: $button-font-color;
   font-weight: bold;
   border-radius: 27px;
 }
 
 .btn-sky-blue:hover {
-  color: white;
+  color: $button-font-color;
   font-weight: bolder;
   box-shadow: 0 0 0.1rem 0.2rem $highlight-blue;
 }
@@ -20,7 +20,7 @@
 
 .main-btn, .main-btn:active, .main-btn:hover  {
 border-radius: 100px;
-color: #FFFFFF;
+color: $button-font-color;
 font-size: 25px;
 font-weight: 700;
 padding: 20px 40px;

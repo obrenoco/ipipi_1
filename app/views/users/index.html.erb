@@ -15,6 +15,7 @@
 <%= simple_form_for @bathroom do |f| %>
   <%= f.input :longitude, input_html: {class: "hidden"}, label: false %>
   <%= f.input :latitude, input_html: {class: "hidden"}, label: false %>
+  <%= f.input :rating, input_html: {class: "hidden"}, label: false %>
   <%= f.submit "create", class: "btn btn-primary hidden", id: "create-button" %>
 <% end %>
 </div>
