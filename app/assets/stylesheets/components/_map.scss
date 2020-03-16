@@ -49,7 +49,7 @@ body { margin: 0; padding: 0; }
 
 .geocoder .mapboxgl-ctrl-geocoder {
   line-height: 24px;
-  font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: $map-font;
   position: relative;
   background-color: #fff;
   width: 80%;
