@@ -57,9 +57,15 @@ const adminMap = () => {
     document.getElementById('create-button').classList.remove("hidden")
     let longitude = e.lngLat.lng
     let latitude = e.lngLat.lat
-    const geocoderService = platform.getGeocodingService();
+    // const geocoderService = platform.getGeocodingService();
+    // geocoderService.reverseGeocode(
+    // {
+    //     mode: "retrieveAddress",
+    // }
+    //   );
     document.getElementById('bathroom_longitude').value = longitude
     document.getElementById('bathroom_latitude').value = latitude
+    document.getElementById('bathroom_rating').value = 0
    });
 
   }
