@@ -99,6 +99,7 @@ const initMapbox = () => {
         // getRoute(coords, map);  // this line define the end point
       }
       map.on('click', function(e) {
+        map.flyTo({center: e.lngLat});
         var coordsObj = e.lngLat;
         canvas.style.cursor = '';
         var coords = Object.keys(coordsObj).map(function(key) {
@@ -145,12 +146,6 @@ const initMapbox = () => {
         // getRoute(coords, map);
         // this is where the code from the next step will go
       });
-
-        // Center map on click
-    map.on('click', function(e) {
-      map.flyTo({ center: e.features[0].geometry.coordinates });
-    });
-  //
     });
         // Click when page loaded
     window.addEventListener('load', () => {
