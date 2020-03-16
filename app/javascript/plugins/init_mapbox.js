@@ -145,6 +145,12 @@ const initMapbox = () => {
         // getRoute(coords, map);
         // this is where the code from the next step will go
       });
+
+        // Center map on click
+    map.on('click', function(e) {
+      map.flyTo({ center: e.features[0].geometry.coordinates });
+    });
+  //
     });
         // Click when page loaded
     window.addEventListener('load', () => {
@@ -188,6 +194,10 @@ const generateGeocoder = (mapboxgl) => {
   });
   return geocoder;
 }
+  
+
+
+
 
 // an arbitrary start will always be the same
 // only the end or destination will change
