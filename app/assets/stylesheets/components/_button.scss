@@ -14,10 +14,8 @@
 
 ///////////// HOME BUTTON
 .home-button {
-    text-align: -webkit-center;
-    position: fixed;
-    bottom: 23vh;
-    left: 3.3vh;
+  display: flex;
+  justify-content: center;
 }
 
 .main-btn, .main-btn:active, .main-btn:hover  {
