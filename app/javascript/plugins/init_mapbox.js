@@ -99,7 +99,7 @@ const initMapbox = () => {
         // getRoute(coords, map);  // this line define the end point
       }
       map.on('click', function(e) {
-        map.flyTo({center: e.lngLat});
+        // map.flyTo({center: e.lngLat});
         var coordsObj = e.lngLat;
         canvas.style.cursor = '';
         var coords = Object.keys(coordsObj).map(function(key) {
@@ -189,10 +189,6 @@ const generateGeocoder = (mapboxgl) => {
   });
   return geocoder;
 }
-  
-
-
-
 
 // an arbitrary start will always be the same
 // only the end or destination will change
