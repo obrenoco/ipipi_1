@@ -52,12 +52,12 @@ body { margin: 0; padding: 0; }
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   position: relative;
   background-color: #fff;
-  width: 80%;
+  width: 100%;
   min-width: 240px;
   z-index: 1;
   border-radius: 50px;
   transition: width .25s, min-width .25s;
-  margin: 4vh 5vh 0 4vh;
+  margin: 4vh 5vh 0 0vh;
   opacity: 0.8;
 }
 
@@ -65,6 +65,11 @@ body { margin: 0; padding: 0; }
   opacity: 1;
 }
 
-.mapboxgl-ctrl-geocoder .suggestions {
+.geocoder .mapboxgl-ctrl-geocoder ul{
   width: auto;
+}
+
+.suggestions li {
+  position: relative;
+  left: 0px;
 }
