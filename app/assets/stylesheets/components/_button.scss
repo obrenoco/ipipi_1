@@ -14,8 +14,10 @@
 
 ///////////// HOME BUTTON
 .home-button {
-  text-align: -webkit-center;
-  margin-top: 40vh;
+    text-align: -webkit-center;
+    position: fixed;
+    bottom: 23vh;
+    left: 3.3vh;
 }
 
 .main-btn, .main-btn:active, .main-btn:hover  {
@@ -23,7 +25,7 @@
   color: $button-font-color;
   font-size: 25px;
   font-weight: 700;
-  padding: 20px 40px;
+  padding: 3vh 16vh;
   background-color: #49c2e8;
   box-shadow: 1px 1px 20px 0px RGBA(0,72,95,0.8) !important;
   -webkit-box-shadow: 1px 1px 20px 0px #000000;
