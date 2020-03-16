@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  background: rgb(0,152,194);
-  background: linear-gradient(297deg, rgba(0,152,194,1) 0%, rgba(183,237,252,1) 100%);
+  // background: rgb(0,152,194);
+  // background: linear-gradient(297deg, rgba(0,152,194,1) 0%, rgba(183,237,252,1) 100%);
+  background-image: url(https://scontent-gig2-1.xx.fbcdn.net/v/t1.15752-9/90009436_816572722169681_2449856526823718912_n.png?_nc_cat=100&_nc_sid=b96e70&_nc_oc=AQmvqN5MnIFpN9HnRhm07An6DGQtxwg7_2ldb9NgRt7VL6JXOy-bFRZ812O5FHC6R_8&_nc_ht=scontent-gig2-1.xx&oh=1d14e1ecdcae190504341c0e2f027f8c&oe=5E93F3C7);
+  background-position: center;
   height: -webkit-fill-available;
 
 }
@@ -13,7 +15,7 @@
   margin: 12vh 3vh;
   height: 57vh;
   padding: 4vh;
-  border-radius: 21px;
+  border-radius: 12px;
   background-color: white;
 -webkit-box-shadow: 0px 0px 33px -2px rgba(0,0,0,0.4);
 -moz-box-shadow: 0px 0px 33px -2px rgba(0,0,0,0.4);
@@ -22,5 +24,5 @@ box-shadow: 0px 0px 33px -2px rgba(0,0,0,0.4);
 
 .txt-done {
   position: absolute;
-  top: 17%;
+  top: 19%;
 }

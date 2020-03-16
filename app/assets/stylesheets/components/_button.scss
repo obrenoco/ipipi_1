@@ -44,8 +44,7 @@ text-align: center;
     font-size: 3vh;
     font-weight: 700;
     padding: 11%;
-    -webkit-box-shadow: 1px 1px 7px 0px #000000;
-    -moz-box-shadow: 1px 1px 20px 0px #000000;
+
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
@@ -55,7 +54,10 @@ text-align: center;
 }
 
 .done-blue-btn:hover {
-
+color: white;
+    text-decoration: none;
+        -webkit-box-shadow: 1px 1px 7px 0px #000000;
+    -moz-box-shadow: 1px 1px 20px 0px #000000;
 }
 
 .back-icon {
@@ -65,13 +67,13 @@ text-align: center;
 
 .stars {
     position: absolute;
-    top: 21vh;
-    left: 9vh;
+    top: 22vh;
+    left: 8vh;
 }
 .share-icons {
   position: absolute;
-      bottom: 3vh;
-    left: 13vh;
+      bottom: 5vh;
+    left: 9vh;
 }
 
 .share-icons a {
