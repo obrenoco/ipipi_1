@@ -1,12 +1,12 @@
 .btn-sky-blue {
   background-color: $sky-blue;
-  color: white;
+  color: $button-font-color;
   font-weight: bold;
   border-radius: 27px;
 }
 
 .btn-sky-blue:hover {
-  color: white;
+  color: $button-font-color;
   font-weight: bolder;
   box-shadow: 0 0 0.1rem 0.2rem $highlight-blue;
 }
@@ -20,7 +20,7 @@
 
 .main-btn, .main-btn:active, .main-btn:hover  {
 border-radius: 100px;
-color: #FFFFFF;
+color: $button-font-color;
 font-size: 25px;
 font-weight: 700;
 padding: 20px 40px;
@@ -44,7 +44,6 @@ text-align: center;
     font-size: 3vh;
     font-weight: 700;
     padding: 11%;
-
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
@@ -70,6 +69,7 @@ color: white;
     top: 22vh;
     left: 8vh;
 }
+
 .share-icons {
   position: absolute;
       bottom: 5vh;
@@ -78,4 +78,28 @@ color: white;
 
 .share-icons a {
   color: inherit;
+}
+
+.go-button {
+  background-color: #4AC2E8;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 50%;
+  width : 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  letter-spacing: 0px !important;
+}
+
+.go-button p {
+  color:white;
+  text-decoration: none;
+  }
+
+.go-button:hover {
+  font-weight: bolder;
+  box-shadow: 0 0 0.1rem 0.2rem rgba(25, 201, 255, 0.25);
+  text-decoration: none !important;
 }

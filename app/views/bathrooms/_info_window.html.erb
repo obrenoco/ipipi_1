@@ -1,8 +1,28 @@
+<div class="bathroom-window">
 
-<p><%= bathroom.location %></p>
-<p id="distance-to">0</p>
+  <div class="show-card-infos">
+    <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
+    <p><em><%= bathroom.location %></em></p>
+  </div>
 
-<span class="hidden" id="card-bathroom-lat"><%= bathroom.latitude %></span>
-<span class="hidden" id="card-bathroom-lng"><%= bathroom.longitude %></span>
+  <div>
+    <p id="distance-to">0</p>
+  </div>
 
-<%= link_to 'GO', bathroom_path(bathroom.id), class: 'form-actions' %>
+  <div class="stars">
+    <% (bathroom.rating.to_i).times do %>
+      <i class="fas fa-star" id="star-icon"></i>
+    <% end %>
+    <% (5 - bathroom.rating.to_i).times do %>
+      <i class="far fa-star" id="star-icon"></i>
+    <% end %>
+  </div>
+
+  <span class="hidden" id="card-bathroom-lat"><%= bathroom.latitude %></span>
+  <span class="hidden" id="card-bathroom-lng"><%= bathroom.longitude %></span>
+  <span class="hidden" id="card-bathroom-id"><%= bathroom.id %></span>
+
+  <div>
+    <p class="btn go-button" id="google-maps">GO</p>
+  </div>
+</div>

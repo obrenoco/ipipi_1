@@ -1,11 +1,17 @@
 .share-icons ul, li {
     display: flex;
     flex-direction: row;
-    color: #333;
+    color: icon-color;
     text-decoration: none;
     // text-align: center;
     justify-content: center;
     margin: 0 18px;
     padding-inline-start: 0px;
 
+}
+
+#marker-icon {
+  color: #C43829;
+  font-size: 100px;
+  margin-right: 10px;
 }

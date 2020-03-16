@@ -1,5 +1,5 @@
 .navbar h1 {
-  color: white;
+  color: $button-font-color;
   font-size: 28px;
   font-weight: bold;
   margin: 0;
@@ -20,11 +20,11 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: white;
+  color: $button-font-color;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-  color: white;
+  color: $button-font-color;
 }
 
 .nav-item {
@@ -33,14 +33,10 @@
 }
 
 .nav-link {
-  color: white;
+  color: $button-font-color;
   margin: 0;
 }
 
 .center {
   display: center;
 }
-
-// .shadowy {
-//   box-shadow: 10px 10px;
-// }
