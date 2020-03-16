@@ -21,6 +21,7 @@
     mutations.forEach(function(mutation) {
       if (mutation.addedNodes[0].className === "mapboxgl-popup-content") {
         navigator.geolocation.getCurrentPosition(position => {
+          // Create the distance to display in the popup
           var originLat = position.coords.latitude;
           var originLng = position.coords.longitude;
           console.log(originLng);
@@ -33,6 +34,17 @@
           let options = {units: 'kilometers'};
           let distance = turf.distance(from, to, options);
           distanceDisplay.innerHTML = `${Math.round((distance + Number.EPSILON) * 100) / 100} km`;
+          // Double click to redirect to google maps and done page on popup
+          const googleLink = document.getElementById("google-maps");
+          googleLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const bathroomId = parseFloat(document.getElementById("card-bathroom-id").innerText);
+            const completeLink = "https://www.google.com/maps/dir/?api=1&origin=" + originLat + "," +
+              originLng + "&destination=" + bathroomLat + "," + bathroomLng + "&travelmode=walking";
+            const maps = window.open(completeLink, "_blank");
+            const done = window.location.replace("/bathrooms/" + bathroomId + "/done");
+            return maps, done;
+          });
         },
         () => {},
         {maximumAge:60000, timeout:5000, enableHighAccuracy:true}
