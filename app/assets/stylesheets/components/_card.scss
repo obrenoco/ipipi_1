@@ -39,11 +39,15 @@
   justify-content: center;
 }
 
-.stars {
+.stars-done {
     margin-bottom: 4px;
     position: absolute;
     top: 20vh;
     right: 7vh;
+}
+
+.stars {
+  margin-bottom: 4px;
 }
 
 .txt-done {
