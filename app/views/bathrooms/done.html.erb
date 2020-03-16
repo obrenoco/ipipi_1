@@ -56,6 +56,7 @@
   const whatsappLink = document.getElementById("whatsapp-share");
   const bathroomLat = parseFloat(document.getElementById("toilet-lat").innerText);
   const bathroomLng = parseFloat(document.getElementById("toilet-lng").innerText);
-  const completeLink = `whatsapp://send?text=https://www.google.com/maps/search/?api=1&query=${bathroomLat},${bathroomLng}`;
+  const completeLink = "https://wa.me/?text=http://maps.google.com/maps?q=" + bathroomLat + "," + bathroomLng;
+  console.log(completeLink);
   whatsappLink.href = completeLink;
 </script>
