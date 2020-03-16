@@ -43,25 +43,25 @@
 
 <script>
   // Give link to google maps with directions
-  const googleLink = document.getElementById("google-maps");
+  const googleLink = document.getElementById("goog");
   googleLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  let originLat = 0;
-  let originLng = 0;
-  navigator.geolocation.getCurrentPosition(position => {
-    originLat = position.coords.latitude;
-    originLng = position.coords.longitude;
-    console.log(originLng);
-    const bathroomLat = parseFloat(document.getElementById("bathroom-lat").innerText);
-    const bathroomLng = parseFloat(document.getElementById("bathroom-lng").innerText);
-    const bathroomId = parseFloat(document.getElementById("bathroom-id").innerText);
-    const completeLink = "https://www.google.com/maps/dir/?api=1&origin=" + originLat + "," +
-      originLng + "&destination=" + bathroomLat + "," + bathroomLng + "&travelmode=walking";
-    const maps = window.open(completeLink, "_blank");
-    const done = window.location.replace("/bathrooms/" + bathroomId + "/done");
-    return maps, done;
+    e.preventDefault();
+    let originLat = 0;
+    let originLng = 0;
+    navigator.geolocation.getCurrentPosition(position => {
+      originLat = position.coords.latitude;
+      originLng = position.coords.longitude;
+      console.log(originLng);
+      const bathroomLat = parseFloat(document.getElementById("bathroom-lat").innerText);
+      const bathroomLng = parseFloat(document.getElementById("bathroom-lng").innerText);
+      const bathroomId = parseFloat(document.getElementById("bathroom-id").innerText);
+      const completeLink = "https://www.google.com/maps/dir/?api=1&origin=" + originLat + "," +
+        originLng + "&destination=" + bathroomLat + "," + bathroomLng + "&travelmode=walking";
+      const maps = window.open(completeLink, "_blank");
+      const done = window.location.replace("/bathrooms/" + bathroomId + "/done");
+      return maps, done;
+    });
   });
-});
 </script>
 
 <!--  I don't think we need to display the longitude and latitude infos to
