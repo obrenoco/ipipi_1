@@ -1,8 +1,8 @@
 <br>
 <div class="bathroom-card">
- <div id="back-icon">
+  <div id="back-icon">
     <%= link_to bathrooms_path do %>
-      <i class="fas fa-chevron-circle-left" id = "back-icon"> </i>
+      <i class="fas fa-chevron-circle-left" id ="back-icon"> </i>
     <% end %>
   </div>
   <br>
@@ -11,10 +11,10 @@
     <br>
 
     <div class="toilet-infos">
-      <i class="fas fa-toilet" id = "toilet-icon"></i>
+      <i class="fas fa-toilet" id ="toilet-icon"></i>
       <br>
       <div class="show-card-infos">
-        <i class="fas fa-map-marker-alt" id = "marker-icon"></i>
+        <i class="fas fa-map-marker-alt" id ="marker-icon"></i>
         <h1><em><%= @bathroom.location %></em></h1>
         <br>
       </div>
@@ -22,10 +22,10 @@
 
       <div class="stars">
         <% (@bathroom.rating.to_i).times do %>
-          <i class="fas fa-star" id = "star-icon"></i>
+          <i class="fas fa-star" id="star-icon"></i>
         <% end %>
         <% (5 - @bathroom.rating.to_i).times do %>
-          <i class="far fa-star" id = "star-icon"></i>
+          <i class="far fa-star" id="star-icon"></i>
         <% end %>
       </div>
 
@@ -37,7 +37,7 @@
   <span class="hidden" id="bathroom-lng"><%= @bathroom.longitude %></span>
   <span class="hidden" id="bathroom-id"><%= @bathroom.id %></span>
   <br>
-      <p class="btn go-button" id="google-maps">GO</p>
+    <p class="btn go-button" id="goog">GO</p>
   </div>
 </div>
 
