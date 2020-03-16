@@ -1,36 +1,38 @@
 .btn {
-color: white !important;;
-text-transform: uppercase;
-text-decoration: none;
-letter-spacing: 3px;
+  color: white !important;;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 3px;
 }
+
 .btn:active {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25);
-    background-color: #00b1e8;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(22, 127, 251, 0.25);
+  background-color: #00b1e8;
 }
+
 .form-actions {
-color: white !important;;
-background: #4EC2E8;
-padding: 5px;
-border-radius: 45px;
-display: inline-block;
-border: none;
-transition: all 0.4s ease 0s;
-text-decoration: none;
+  color: white !important;;
+  background: #4EC2E8;
+  padding: 5px;
+  border-radius: 45px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  text-decoration: none;
 }
 
 .form-actions:hover {
-text-decoration: none;
-color: white !important;
-text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
--webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
--moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-transition: all 0.3s ease 0s;
+  text-decoration: none;
+  color: white !important;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
 }
 
 .container-log-in {
-width: 700px;
-margin: auto;
-border-color: black !important;;
+  width: 700px;
+  margin: auto;
+  border-color: black !important;;
 }
