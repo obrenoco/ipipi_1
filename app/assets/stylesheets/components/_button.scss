@@ -19,61 +19,55 @@
 }
 
 .main-btn, .main-btn:active, .main-btn:hover  {
-border-radius: 100px;
-color: $button-font-color;
-font-size: 25px;
-font-weight: 700;
-padding: 20px 40px;
-background-color: #49c2e8;
-box-shadow: 1px 1px 20px 0px RGBA(0,72,95,0.8) !important;
--webkit-box-shadow: 1px 1px 20px 0px #000000;
--moz-box-shadow: 1px 1px 20px 0px #000000;
-text-decoration: none;
-display: inline-block;
-cursor: pointer;
-text-align: center;
+  border-radius: 100px;
+  color: $button-font-color;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 20px 40px;
+  background-color: #49c2e8;
+  box-shadow: 1px 1px 20px 0px RGBA(0,72,95,0.8) !important;
+  -webkit-box-shadow: 1px 1px 20px 0px #000000;
+  -moz-box-shadow: 1px 1px 20px 0px #000000;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
 }
 
 .done-blue-btn {
-    position: absolute;
-      background-color:#5fbedc;
-    border-radius: 100px;
-    line-height: 0;
-    color: #FFFFFF;
-    width: 80%;
-    font-size: 3vh;
-    font-weight: 700;
-    padding: 11%;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    bottom: 26%;
-    left: 11%;
+  position: absolute;
+  background-color:#5fbedc;
+  border-radius: 100px;
+  line-height: 0;
+  color: #FFFFFF;
+  width: 80%;
+  font-size: 3vh;
+  font-weight: 700;
+  padding: 11%;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  bottom: 26%;
+  left: 11%;
 }
 
 .done-blue-btn:hover {
-color: white;
-    text-decoration: none;
-        -webkit-box-shadow: 1px 1px 7px 0px #000000;
-    -moz-box-shadow: 1px 1px 20px 0px #000000;
+  color: white;
+  text-decoration: none;
+  -webkit-box-shadow: 1px 1px 7px 0px #000000;
+  -moz-box-shadow: 1px 1px 20px 0px #000000;
 }
 
 .back-icon {
   position: absolute;
   right: 23px;
-  }
-
-.stars {
-    position: absolute;
-    top: 22vh;
-    left: 8vh;
 }
 
 .share-icons {
   position: absolute;
-      bottom: 5vh;
-    left: 9vh;
+  bottom: 5vh;
+  left: 9vh;
 }
 
 .share-icons a {
@@ -96,7 +90,7 @@ color: white;
 .go-button p {
   color:white;
   text-decoration: none;
-  }
+}
 
 .go-button:hover {
   font-weight: bolder;
