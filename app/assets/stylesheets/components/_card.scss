@@ -37,6 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: $info-window;
 }
 
 .stars-done {
@@ -53,4 +54,5 @@
 .txt-done {
   position: absolute;
   top: 19%;
+  font-family: $done-page;
 }
