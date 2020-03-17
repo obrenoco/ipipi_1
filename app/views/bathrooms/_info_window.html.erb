@@ -10,10 +10,21 @@
   </div>
 
   <div class="stars">
-    <% (bathroom.rating.to_i).times do %>
+    <% cont = 0 %>
+    <% (bathroom.rating.to_f.floor).times do %>
+      <% cont += 1 %>
+      <% unless cont == 5 %>
+        <i class="fas fa-star" id="star-icon"></i>
+      <% end %>
+    <% end %>
+    <% if (bathroom.rating.to_f - bathroom.rating.to_f.floor).zero? %>
+      <i class="far fa-star" id="star-icon"></i>
+    <% elsif ((bathroom.rating.to_f.floor(2) - bathroom.rating.to_f.floor) > 0.25) && ((bathroom.rating.to_f.floor(2) - bathroom.rating.to_f.floor) < 0.75) %>
+      <i class="fas fa-star-half-alt" id="star-icon"></i>
+    <% else %>
       <i class="fas fa-star" id="star-icon"></i>
     <% end %>
-    <% (5 - bathroom.rating.to_i).times do %>
+    <% (4 - bathroom.rating.to_f.floor).times do %>
       <i class="far fa-star" id="star-icon"></i>
     <% end %>
   </div>
@@ -26,3 +37,7 @@
     <p class="btn go-button" id="google-maps">GO</p>
   </div>
 </div>
+
+
+
+<!-- style="width: <%#= (bathroom.rating.to_f.floor(2) - bathroom.rating.to_f.floor) * 100 %>%;" -->
